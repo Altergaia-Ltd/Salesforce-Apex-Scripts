@@ -1,0 +1,7 @@
+String batchDesiredTime = Datetime.newInstance(2019,5,16,1,0,0).format('HH:mm');
+String hours = batchDesiredTime.substring(0, 2);
+String minutes = batchDesiredTime.substring(3, 5);
+String sch = '0 ' + minutes + ' ' + hours + ' ? * SUN-SAT';
+cft_SchedulableUpdateLists job = new cft_SchedulableUpdateLists();
+String jobId = System.schedule('Searchlight Update Sanction Lists', sch, job);
+Utils.debug('Job Id', jobId);
